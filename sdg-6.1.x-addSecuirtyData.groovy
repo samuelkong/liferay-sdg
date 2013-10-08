@@ -79,7 +79,7 @@ import java.util.TimeZone;
 
 import javax.portlet.PortletPreferences;
 
-//Add Site
+// Add site
 
 userId = PortalUtil.getUserId(actionRequest);
 
@@ -95,7 +95,7 @@ groupId = group.getGroupId();
 ServiceContext serviceContext = ServiceContextFactory.getInstance(
 	Group.class.getName(), actionRequest);
 
-//Add Blog 
+// Add blog 
 
 serviceContext.setScopeGroupId(groupId);
 
@@ -107,7 +107,7 @@ BlogsEntry blogEntry = BlogsEntryLocalServiceUtil.addEntry(
 	userId, "blog1", "blog1", "test blog1", 5, 24, 2013, 7, 9, true, false,
 	trackbacks, true, "" , "", null, serviceContext);
 
-//Add Calendar
+// Add calendar
 
 String title1 = "calendar1";
 String description1 = "test calendar1";
@@ -196,7 +196,7 @@ CalEventLocalServiceUtil.addEvent(
 	timeZoneSensitive2, "meeting", repeating2, recurrence, 1, 900000,
 	300000, serviceContext);
 
-//Add Dynamic Data List
+// Add dynamic data list
 
 Layout layoutDD = LayoutLocalServiceUtil.getFriendlyURLLayout(
 	groupId, false, "/dynamic-data");
@@ -295,7 +295,7 @@ PortletPreferencesLocalServiceUtil.updatePreferences(
 	0, 3, layoutDD.getPlid(), "169_INSTANCE_yOInr1Ynqt0S",
 	portletPreferencesDDL);
 
-//Add Wiki
+// Add wiki
 
 Layout layoutWikiD = LayoutLocalServiceUtil.getFriendlyURLLayout(
 	groupId, false, "/wiki-dispaly");
@@ -337,7 +337,7 @@ PortletPreferencesLocalServiceUtil.updatePreferences(
 	0, 3, layoutWikiD.getPlid(), "54_INSTANCE_p6Z9AOc8mPgb",
 	portletPreferencesWiki);
 
-//Add Message Board
+// Add message board
 
 parentCategoryId = 0;
 
@@ -370,7 +370,7 @@ if(question){
 	MBThreadLocalServiceUtil.updateQuestion(message.getThreadId(), true);
 }
 
-//Add Bookmarks
+// Add bookmarks
 
 BookmarksFolder bookmarkFolder = BookmarksFolderLocalServiceUtil.addFolder(
 	 userId, 0, "Folder1", "the first folder", serviceContext);
@@ -409,7 +409,7 @@ AssetEntryLocalServiceUtil.updateEntry(
 	bookmarksEntry2.getDescription(), null, bookmarksEntry2.getUrl(),
 	null, 0, 0, null, false);
 
-//Add Page Comments
+// Add page comments
 
 Layout layoutPComment = LayoutLocalServiceUtil.getFriendlyURLLayout(
 	groupId, false, "/page-comments");
@@ -426,7 +426,7 @@ MBMessageLocalServiceUtil.addDiscussionMessage(
 	classPK, commentMessage.getThreadId(), commentMessage.getMessageId(),
 	"", "cool!", serviceContext);
 
-//Add Poll
+// Add poll
 
 Layout layoutPD = LayoutLocalServiceUtil.getFriendlyURLLayout(
 	groupId, false, "/polls-display");
@@ -512,7 +512,7 @@ PortletPreferencesLocalServiceUtil.updatePreferences(
 	0, 3, layoutPD.getPlid(), "59_INSTANCE_TbzT9KKPaRFZ",
 	portletPreferencesPoll);
 
-//Add Alerts
+// Add alerts
 
 announcementsClassNameId = 10001;
 
@@ -524,14 +524,14 @@ AnnouncementsEntryLocalServiceUtil.addEntry(
 	"http://baike.baidu.com/view/78799.htm", "general", 0, 0, 0, 0, 0,
 	true, 8, 4, 2013, 3, 30, 0, true);
 
-//Add Announcements
+// Add announcements
 
 AnnouncementsEntryLocalServiceUtil.addEntry(
 	userId, announcementsClassNameId, classPKAnnouncements, "Meeting",
 	"Tech- Talk Meeting : 2-4 PM today.", "", "general", 0, 0, 0, 0, 0,
 	true, 7, 5, 2013, 3, 30, 1, false);
 
-//Add Rss
+// Add rss
 
 Layout layoutRSS = LayoutLocalServiceUtil.getFriendlyURLLayout(
 	groupId, false, "/rss");
@@ -561,7 +561,7 @@ PortletPreferencesLocalServiceUtil.updatePreferences(
 	0, 3, layoutRSS.getPlid(), "39_INSTANCE_vn59KhKI7Y2w",
 	portletPreferencesRSS);
 
-//Add Iframe
+// Add iframe
 
 Layout layoutIFrame = LayoutLocalServiceUtil.getFriendlyURLLayout(
 	groupId, false, "/iFrame");
@@ -590,7 +590,7 @@ PortletPreferencesLocalServiceUtil.updatePreferences(
 	0, 3, layoutIFrame.getPlid(), "48_INSTANCE_mpN1u52gzmbO",
 	portletPreferencesIFrame);
 
-//Add Quik Note
+// Add quik note
 
 Layout layoutQN = LayoutLocalServiceUtil.getFriendlyURLLayout(
 	groupId, false, "/quick-note");
@@ -619,7 +619,7 @@ PortletPreferencesLocalServiceUtil.updatePreferences(
 	0, 3, layoutQN.getPlid(), "97_INSTANCE_a1SJg50KuLFc",
 	portletPreferencesNote);
 
-//Add Web Content
+// Add web content
 
 Layout layoutWC = LayoutLocalServiceUtil.getFriendlyURLLayout(
 	groupId, false, "/web-content");
@@ -756,7 +756,7 @@ PortletPreferencesLocalServiceUtil.updatePreferences(
 	0, 3, layoutWC.getPlid(), "62_INSTANCE_ffagnWrlaM2y",
 	portletPreferencesWCList);
 
-//Add Shopping
+// Add shopping
 
 ShoppingCategory shoppingCategory =
 	ShoppingCategoryLocalServiceUtil.addCategory(
@@ -802,7 +802,7 @@ ShoppingItemLocalServiceUtil.addItem(
 	1000, false, null, false, "", smallFileShopping, false, "", mediumFile,
 	false, "", largeFileShopping, itemFields, itemPrices, serviceContext);
 
-//ADD Categories
+// Add categories
 
 Map<Locale, String> titleMapVocabulary1 = new HashMap<Locale, String>();
 
@@ -836,7 +836,7 @@ AssetCategoryLocalServiceUtil.addCategory(
 	userId, 0, titleMapCategory1, decriptionMapCategory1,
 	vocabulary1.getVocabularyId(), categoryProperties, serviceContext);
 
-//Add Tag
+// Add tag
 
 Layout layoutTagC = LayoutLocalServiceUtil.getFriendlyURLLayout(
 	groupId, false, "/tag-cloud");
@@ -895,7 +895,7 @@ PortletPreferencesLocalServiceUtil.updatePreferences(
 	0, 3, layoutTagC.getPlid(), "148_INSTANCE_ovvJg184K1ix",
 	portletPreferencesTagCloud);
 
-//Add Relate Asset
+// Add relate asset
 
 AssetEntry assetBlog = AssetEntryLocalServiceUtil.getEntry(
 	"com.liferay.portlet.blogs.model.BlogsEntry", blogEntry.getEntryId());
