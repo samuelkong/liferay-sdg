@@ -12,6 +12,12 @@ import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PortletKeys;
 import com.liferay.portal.util.WebKeys;
+import com.liferay.portlet.blogs.model.BlogsEntry;
+import com.liferay.portlet.blogs.NoSuchEntryException;
+import com.liferay.portlet.blogs.service.BlogsEntryLocalServiceUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.portlet.PortletPreferences;
 
@@ -129,9 +135,11 @@ PortletPreferences userStatisticsPortletPreferences =
 		PortletConstants.DEFAULT_PREFERENCES);
 
 userStatisticsPortletPreferences.setValue(
-	"displayActivityCounterName0", "creator.comments");
-userStatisticsPortletPreferences.setValue(
 	"rankByContribution", "true");
+userStatisticsPortletPreferences.setValue(
+	"rankByParticipation", "true");
+userStatisticsPortletPreferences.setValue(
+	"displayActivityCounterName0", "user.blogs");
 
 PortletPreferencesLocalServiceUtil.updatePreferences(
 	0, PortletKeys.PREFS_OWNER_TYPE_LAYOUT, userStatisticsLayout.getPlid(),
