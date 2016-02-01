@@ -72,9 +72,9 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 			if (Validator.isNotNull(languageChangeTime) &&
 				userLanguage.equals(Constants.LANGUAGE_ID_EN_US)) {
 				ExpandoValueLocalServiceUtil.addValue(
-						table.getClassNameId(), table.getTableId(),
-						column.getColumnId(), user.getUserId(),
-						StringPool.BLANK);
+					table.getClassNameId(), table.getTableId(),
+					column.getColumnId(), user.getUserId(),
+					StringPool.BLANK);
 			}
 
 			if (Validator.isNotNull(languageChangeTime) 
@@ -85,19 +85,17 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 				UserLocalServiceUtil.updateUser(user);
 
 				ExpandoValueLocalServiceUtil.addValue(
-						table.getClassNameId(), table.getTableId(),
-						column.getColumnId(), user.getUserId(),
-						StringPool.BLANK);
+					table.getClassNameId(), table.getTableId(),
+					column.getColumnId(), user.getUserId(),
+					StringPool.BLANK);
 				_log.info("update user language to en_US");
 			}
 		} catch (NoSuchUserException nsue) {
 			_log.info("user " + PortletPropsValues.DETECT_USER_EMAIL 
 				+ " does not exist");
 		}
-		catch (PortalException e) {
-			e.printStackTrace();
-		} catch (SystemException e) {
-			e.printStackTrace();
+		catch (Exception e) {
+			_log.error(e);
 		}
 	}
 
