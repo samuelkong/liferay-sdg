@@ -46,7 +46,8 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 
 			String userLanguage = user.getLanguageId();
 
-			/* code logic
+			/**
+			 * code logic
 			 * time is null, language is zh_CN, -> add time stamp
 			 * time is null, language is not zh_CN - > return
 			 * (no need to implement)
@@ -55,7 +56,7 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 			 * (no need to implement)
 			 * time is not null, language is zh_CN, more/equal than 20 min,
 			 * set user language to be en_US, remove timestamp from expando.
-			*/
+			 */
 			long timeStamp = System.currentTimeMillis();
 
 			if (Validator.isNull(languageChangeTime) &&
