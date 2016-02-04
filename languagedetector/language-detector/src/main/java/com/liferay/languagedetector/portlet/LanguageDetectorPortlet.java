@@ -19,6 +19,7 @@ import javax.portlet.PortletException;
  * Portlet implementation class LanguageDetectorPortlet
  */
 public class LanguageDetectorPortlet extends MVCPortlet {
+
 	public void init() throws PortletException {
 		super.init();
 		ExpandoTable table = null;
@@ -31,11 +32,12 @@ public class LanguageDetectorPortlet extends MVCPortlet {
 			try {
 				table = ExpandoTableLocalServiceUtil.getDefaultTable(
 					companyId, User.class.getName());
-			} catch (Exception e) {
-
+			}
+			catch (Exception e) {
 				throw new PortletException();
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new PortletException();
 		}
 

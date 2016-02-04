@@ -46,17 +46,6 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 
 			String userLanguage = user.getLanguageId();
 
-			/**
-			 * code logic
-			 * time is null, language is zh_CN, -> add time stamp
-			 * time is null, language is not zh_CN - > return
-			 * (no need to implement)
-			 * time is not null, language is not zh_CN -> remove time stamp
-			 * time is not null, language is zh_CN, less than 20, return
-			 * (no need to implement)
-			 * time is not null, language is zh_CN, more/equal than 20 min,
-			 * set user language to be en_US, remove timestamp from expando.
-			 */
 			long timeStamp = System.currentTimeMillis();
 
 			if (Validator.isNull(languageChangeTime) &&
@@ -67,11 +56,14 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 					column.getColumnId(), user.getUserId(),
 					String.valueOf(timeStamp));
 
-				_log.info("Detect user language change.");
+				if (_log.isInfoEnabled()) {
+					_log.info("Detect user language change.");
+				}
 			}
 
 			if (Validator.isNotNull(languageChangeTime) &&
-				(!userLanguage.equals(Constants.LANGUAGE_ID_ZH_CN))) {
+				!userLanguage.equals(Constants.LANGUAGE_ID_ZH_CN)) {
+
 				ExpandoValueLocalServiceUtil.addValue(
 					table.getClassNameId(), table.getTableId(),
 					column.getColumnId(), user.getUserId(), StringPool.BLANK);
@@ -79,7 +71,7 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 
 			if (Validator.isNotNull(languageChangeTime) &&
 				userLanguage.equals(Constants.LANGUAGE_ID_ZH_CN) &&
-				(timeStamp - Long.valueOf(languageChangeTime) >= 1200000)) {
+				(timeStamp - Long.valueOf(languageChangeTime)) >= 1200000) {
 
 				user.setLanguageId(Constants.LANGUAGE_ID_EN_US);
 				UserLocalServiceUtil.updateUser(user);
@@ -88,14 +80,23 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 					table.getClassNameId(), table.getTableId(),
 					column.getColumnId(), user.getUserId(), StringPool.BLANK);
 
-				_log.info("update user language to en_US");
+				if (_log.isInfoEnabled()) {
+					_log.info("update user language to en_US");
+				}
 			}
-		} catch (NoSuchUserException nsue) {
-			_log.info("user " + PortletPropsValues.DETECT_USER_EMAIL +
-				" does not exist");
+		}
+		catch (NoSuchUserException nsue) {
+			if (_log.isInfoEnabled()) {
+				_log.info(
+					"user " +
+					PortletPropsValues.DETECT_USER_EMAIL +
+					" does not exist");
+			}
 		}
 		catch (Exception e) {
-			_log.error(e);
+			if (_log.isErrorEnabled()) {
+				_log.error(e);
+			}
 		}
 	}
 
