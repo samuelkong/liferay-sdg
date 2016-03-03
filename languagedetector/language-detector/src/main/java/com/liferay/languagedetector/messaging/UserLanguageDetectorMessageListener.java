@@ -49,7 +49,7 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 			long timeStamp = System.currentTimeMillis();
 
 			if (Validator.isNull(languageChangeTime) &&
-				userLanguage.equals(Constants.LANGUAGE_ID_ZH_CN)) {
+				userLanguage.equals(PortletPropsValues.DETECT_LANGUAGE)) {
 
 				ExpandoValueLocalServiceUtil.addValue(
 					table.getClassNameId(), table.getTableId(),
@@ -62,7 +62,7 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 			}
 
 			if (Validator.isNotNull(languageChangeTime) &&
-				!userLanguage.equals(Constants.LANGUAGE_ID_ZH_CN)) {
+				!userLanguage.equals(PortletPropsValues.DETECT_LANGUAGE)) {
 
 				ExpandoValueLocalServiceUtil.addValue(
 					table.getClassNameId(), table.getTableId(),
@@ -70,10 +70,10 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 			}
 
 			if (Validator.isNotNull(languageChangeTime) &&
-				userLanguage.equals(Constants.LANGUAGE_ID_ZH_CN) &&
-				(timeStamp - Long.valueOf(languageChangeTime)) >= 1200000) {
+				userLanguage.equals(PortletPropsValues.DETECT_LANGUAGE) &&
+				(timeStamp - Long.valueOf(languageChangeTime)) >= PortletPropsValues.LANGUAGE_LIFE_MS) {
 
-				user.setLanguageId(Constants.LANGUAGE_ID_EN_US);
+				user.setLanguageId(PortletPropsValues.RECOVER_LANGUAGE);
 				UserLocalServiceUtil.updateUser(user);
 
 				ExpandoValueLocalServiceUtil.addValue(
@@ -81,7 +81,7 @@ public class UserLanguageDetectorMessageListener implements MessageListener {
 					column.getColumnId(), user.getUserId(), StringPool.BLANK);
 
 				if (_log.isInfoEnabled()) {
-					_log.info("update user language to en_US");
+					_log.info("update user language to " + PortletPropsValues.RECOVER_LANGUAGE);
 				}
 			}
 		}
