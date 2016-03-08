@@ -5,9 +5,7 @@
 	<portlet>
 		<portlet-name>language-detector</portlet-name>
 		<display-name>Language Detector</display-name>
-		<portlet-class>
-			com.liferay.languagedetector.portlet.LanguageDetectorPortlet
-		</portlet-class>
+		<portlet-class>com.liferay.languagedetector.portlet.LanguageDetectorPortlet</portlet-class>
 		<init-param>
 			<name>view-template</name>
 			<value>/html/languagedetector/view.jsp</value>
